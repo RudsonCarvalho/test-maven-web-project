@@ -1,0 +1,54 @@
+exemplo de projetinho web criado pelo terminal
+
+mvn archetype:create -DartifactId=MvnWebProject2 -DgroupId=br.com.mathbe -DinteractiveMode=fase -DarchetypeArtifactId=mvn-archetype-webapp
+
+//apenas para atualizar a versão do jUnit para a ultima.
+mvn versions:use-latest-versions
+
+//adicionado a dependencia do HttpServlet apenas para o eclipse nao reclamar
+<dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>javax.servlet-api</artifactId>
+    <version>3.1.0</version>
+</dependency>
+
+
+//adiciona o plugin do servidor com servlet container que quiser...
+ <plugin>
+        <groupId>org.apache.tomcat.maven</groupId>
+        <artifactId>tomcat7-maven-plugin</artifactId>
+        <version>2.2</version>
+      </plugin>
+
+//ou
+
+<plugin>
+      <groupId>org.eclipse.jetty</groupId>
+      <artifactId>jetty-maven-plugin</artifactId>
+      <version>9.3.10-SNAPSHOT</version>
+    </plugin>
+
+//ou wildfly
+
+<plugin>
+                <groupId>org.wildfly.plugins</groupId>
+                <artifactId>wildfly-maven-plugin</artifactId>
+                <version>1.1.0.Alpha9</version>
+                <configuration>
+                    <jboss-home>/opt/WildFly</jboss-home>
+                    <modules-path>/opt/WildFly/modules</modules-path>
+                    <port>9999</port>
+                </configuration>
+            </plugin>
+
+
+//start server
+mvn tomcat7:run
+
+ou 
+
+mvn jetty:run
+
+ou 
+
+mvn wildfly:run
